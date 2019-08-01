@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { auth } from '../../firebase/firebase.utils';
@@ -13,26 +13,26 @@ import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
 const Header = ({ currentUser, hidden }) => (
   <div className='header'>
-    <Link className='logo-container' to='/'>
+    <NavLink className='logo-container' to='/'>
       <Logo className='logo' />
-    </Link>
+    </NavLink>
 
     <div className='options-container'>
       <div className='options'>
-        <Link className='option' to='/shop'>
+        <NavLink className='option' activeClassName='active' to='/shop'>
           SHOP
-        </Link>
-        <Link className='option' to='/shop'>
+        </NavLink>
+        <NavLink className='option' activeClassName='active' to='/contact'>
           CONTACT
-        </Link>
+        </NavLink>
         {currentUser ? (
           <div className='option' onClick={() => auth.signOut()}>
             SIGN OUT
           </div>
         ) : (
-          <Link className='option' to='/signin'>
+          <NavLink className='option' activeClassName='active' to='/signin'>
             SIGN IN
-          </Link>
+          </NavLink>
         )}
         <CartIcon />
       </div>
